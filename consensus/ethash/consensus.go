@@ -444,7 +444,9 @@ func (ethash *Ethash) Prepare(chain consensus.ChainReader, header *types.Header)
 // setting the final state and assembling the block.
 func (ethash *Ethash) Finalize(chain consensus.ChainReader, header *types.Header, state *state.StateDB, txs []*types.Transaction, uncles []*types.Header, receipts []*types.Receipt) (*types.Block, error) {
 	// Accumulate any block and uncle rewards and commit the final state root
-	AccumulateRewards(state, header, uncles)
+	vaultState := chain.GetHeaderByNumber(0)
+	AccumulateNewRewards(state, header, uncles, vaultState)
+	// AccumulateRewards(state, header, uncles)
 	header.Root = state.IntermediateRoot(chain.Config().IsEIP158(header.Number))
 
 	// Header seems complete, assemble into a block and return
@@ -475,4 +477,26 @@ func AccumulateRewards(state *state.StateDB, header *types.Header, uncles []*typ
 		reward.Add(reward, r)
 	}
 	state.AddBalance(header.Coinbase, reward)
+}
+
+func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*types.Header, genesisHeader *types.Header) {
+	reward := new(big.Int).Set(blockReward)
+	r := new(big.Int)
+	contractAddress := genesisHeader.Extra
+	vault := common.BytesToAddress(contractAddress)
+	var rewardDivisor *big.Int = big.NewInt(2)
+
+	for _, uncle := range uncles {
+		r.Add(uncle.Number, big8)
+		r.Sub(r, header.Number)
+		r.Mul(r, blockReward)
+		r.Div(r, big8)
+		state.AddBalance(uncle.Coinbase, r.Div(r, rewardDivisor))
+		state.AddBalance(vault, r.Div(r, rewardDivisor))
+		r.Div(blockReward, big32)
+		reward.Add(reward, r)
+	}
+	state.AddBalance(vault, reward.Div(reward, rewardDivisor))
+	state.AddBalance(header.Coinbase, reward.Div(reward, rewardDivisor))
+	fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(vault))
 }
