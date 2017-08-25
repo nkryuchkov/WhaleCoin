@@ -463,27 +463,27 @@ var (
 // reward. The total reward consists of the static block reward and rewards for
 // included uncles. The coinbase of each uncle block is also rewarded.
 // TODO (karalabe): Move the chain maker into this package and make this private!
-func AccumulateRewards(state *state.StateDB, header *types.Header, uncles []*types.Header) {
-	reward := new(big.Int).Set(blockReward)
-	r := new(big.Int)
-	for _, uncle := range uncles {
-		r.Add(uncle.Number, big8)
-		r.Sub(r, header.Number)
-		r.Mul(r, blockReward)
-		r.Div(r, big8)
-		state.AddBalance(uncle.Coinbase, r)
+// func AccumulateRewards(state *state.StateDB, header *types.Header, uncles []*types.Header) {
+// 	reward := new(big.Int).Set(blockReward)
+// 	r := new(big.Int)
+// 	for _, uncle := range uncles {
+// 		r.Add(uncle.Number, big8)
+// 		r.Sub(r, header.Number)
+// 		r.Mul(r, blockReward)
+// 		r.Div(r, big8)
+// 		state.AddBalance(uncle.Coinbase, r)
 
-		r.Div(blockReward, big32)
-		reward.Add(reward, r)
-	}
-	state.AddBalance(header.Coinbase, reward)
-}
+// 		r.Div(blockReward, big32)
+// 		reward.Add(reward, r)
+// 	}
+// 	state.AddBalance(header.Coinbase, reward)
+// }
 
 func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*types.Header, genesisHeader *types.Header) {
 	reward := new(big.Int).Set(blockReward)
 	r := new(big.Int)
 	contractAddress := genesisHeader.Extra
-	vault := common.BytesToAddress(contractAddress)
+	contract := common.BytesToAddress(contractAddress)
 	var rewardDivisor *big.Int = big.NewInt(2)
 
 	for _, uncle := range uncles {
@@ -491,12 +491,14 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 		r.Sub(r, header.Number)
 		r.Mul(r, blockReward)
 		r.Div(r, big8)
-		state.AddBalance(uncle.Coinbase, r.Div(r, rewardDivisor))
-		state.AddBalance(vault, r.Div(r, rewardDivisor))
+		rsplit := r.Div(r, rewardDivisor)
+		state.AddBalance(uncle.Coinbase, rsplit)
+		state.AddBalance(contract, rsplit)
 		r.Div(blockReward, big32)
 		reward.Add(reward, r)
 	}
-	state.AddBalance(vault, reward.Div(reward, rewardDivisor))
-	state.AddBalance(header.Coinbase, reward.Div(reward, rewardDivisor))
-	fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(vault))
+	rewardSplit := reward.Div(reward, rewardDivisor)
+	state.AddBalance(contract, rewardSplit)
+	state.AddBalance(header.Coinbase, rewardSplit)
+	fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(contract))
 }
