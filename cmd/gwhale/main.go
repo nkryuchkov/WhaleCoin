@@ -39,7 +39,7 @@ import (
 )
 
 const (
-	clientIdentifier = "geth" // Client identifier to advertise over the network
+	clientIdentifier = "gwhale" // Client identifier to advertise over the network
 )
 
 var (
