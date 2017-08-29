@@ -23,7 +23,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
 )
 
 // The ABI holds information about a contract's context and available
