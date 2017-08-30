@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/accounts/keystore"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
 )
 
 // deployNode creates a new node configuration based on some user input.

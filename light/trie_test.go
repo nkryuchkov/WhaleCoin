@@ -23,14 +23,14 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/WhaleCoinOrg/WhaleCoin/consensus/ethash"
+	"github.com/WhaleCoinOrg/WhaleCoin/core"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/state"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/vm"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethdb"
+	"github.com/WhaleCoinOrg/WhaleCoin/event"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
+	"github.com/WhaleCoinOrg/WhaleCoin/trie"
 )
 
 func TestNodeIterator(t *testing.T) {

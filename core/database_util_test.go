@@ -23,13 +23,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/crypto/sha3"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/types"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto/sha3"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethdb"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
+	"github.com/WhaleCoinOrg/WhaleCoin/rlp"
 )
 
 // Tests block header storage and retrieval operations.

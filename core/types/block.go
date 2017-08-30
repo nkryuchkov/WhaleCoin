@@ -26,10 +26,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/crypto/sha3"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/common/hexutil"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto/sha3"
+	"github.com/WhaleCoinOrg/WhaleCoin/rlp"
 )
 
 var (

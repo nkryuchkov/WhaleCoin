@@ -24,12 +24,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/ens"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/swarm/network"
-	"github.com/ethereum/go-ethereum/swarm/services/swap"
-	"github.com/ethereum/go-ethereum/swarm/storage"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/contracts/ens"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/network"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/services/swap"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/storage"
 )
 
 const (

@@ -29,7 +29,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
 	"golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/terminal"
 )

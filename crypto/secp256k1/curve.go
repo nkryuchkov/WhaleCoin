@@ -37,7 +37,7 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/WhaleCoinOrg/WhaleCoin/common/math"
 )
 
 /*

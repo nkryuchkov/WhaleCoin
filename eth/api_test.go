@@ -21,9 +21,9 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/state"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethdb"
 )
 
 var dumper = spew.ConfigState{Indent: "    "}

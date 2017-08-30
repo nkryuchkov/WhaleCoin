@@ -20,9 +20,9 @@ import (
 	"container/list"
 	"fmt"
 
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/types"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethdb"
+	"github.com/WhaleCoinOrg/WhaleCoin/event"
 )
 
 // Implement our EthTest Manager

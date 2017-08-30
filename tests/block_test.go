@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
 )
 
 func TestBlockchain(t *testing.T) {

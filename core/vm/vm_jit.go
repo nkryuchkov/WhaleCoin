@@ -38,9 +38,9 @@ import (
 	"math/big"
 	"unsafe"
 
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/state"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
 )
 
 type JitVm struct {

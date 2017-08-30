@@ -21,11 +21,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/ethereum/go-ethereum/contracts/chequebook"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/swarm/network/kademlia"
-	"github.com/ethereum/go-ethereum/swarm/services/swap"
-	"github.com/ethereum/go-ethereum/swarm/storage"
+	"github.com/WhaleCoinOrg/WhaleCoin/contracts/chequebook"
+	"github.com/WhaleCoinOrg/WhaleCoin/p2p/discover"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/network/kademlia"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/services/swap"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/storage"
 )
 
 /*

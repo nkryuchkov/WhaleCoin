@@ -20,9 +20,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/light"
+	"github.com/WhaleCoinOrg/WhaleCoin/core"
+	"github.com/WhaleCoinOrg/WhaleCoin/eth/downloader"
+	"github.com/WhaleCoinOrg/WhaleCoin/light"
 )
 
 const (

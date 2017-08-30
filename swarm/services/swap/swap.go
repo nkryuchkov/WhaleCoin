@@ -26,14 +26,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/chequebook"
-	"github.com/ethereum/go-ethereum/contracts/chequebook/contract"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/swarm/services/swap/swap"
+	"github.com/WhaleCoinOrg/WhaleCoin/accounts/abi/bind"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/contracts/chequebook"
+	"github.com/WhaleCoinOrg/WhaleCoin/contracts/chequebook/contract"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/types"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/services/swap/swap"
 )
 
 // SwAP       Swarm Accounting Protocol with

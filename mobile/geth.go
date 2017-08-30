@@ -24,17 +24,17 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/ethstats"
-	"github.com/ethereum/go-ethereum/les"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/params"
-	whisper "github.com/ethereum/go-ethereum/whisper/whisperv5"
+	"github.com/WhaleCoinOrg/WhaleCoin/core"
+	"github.com/WhaleCoinOrg/WhaleCoin/eth"
+	"github.com/WhaleCoinOrg/WhaleCoin/eth/downloader"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethclient"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethstats"
+	"github.com/WhaleCoinOrg/WhaleCoin/les"
+	"github.com/WhaleCoinOrg/WhaleCoin/node"
+	"github.com/WhaleCoinOrg/WhaleCoin/p2p"
+	"github.com/WhaleCoinOrg/WhaleCoin/p2p/nat"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
+	whisper "github.com/WhaleCoinOrg/WhaleCoin/whisper/whisperv5"
 )
 
 // NodeConfig represents the collection of configuration values to fine tune the Geth

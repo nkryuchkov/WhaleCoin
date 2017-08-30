@@ -37,13 +37,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ethereum/go-ethereum/contracts/chequebook"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	bzzswap "github.com/ethereum/go-ethereum/swarm/services/swap"
-	"github.com/ethereum/go-ethereum/swarm/services/swap/swap"
-	"github.com/ethereum/go-ethereum/swarm/storage"
+	"github.com/WhaleCoinOrg/WhaleCoin/contracts/chequebook"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/p2p"
+	"github.com/WhaleCoinOrg/WhaleCoin/p2p/discover"
+	bzzswap "github.com/WhaleCoinOrg/WhaleCoin/swarm/services/swap"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/services/swap/swap"
+	"github.com/WhaleCoinOrg/WhaleCoin/swarm/storage"
 )
 
 const (

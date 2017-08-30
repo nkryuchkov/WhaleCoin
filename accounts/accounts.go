@@ -20,10 +20,10 @@ package accounts
 import (
 	"math/big"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/event"
+	ethereum "github.com/WhaleCoinOrg/WhaleCoin"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/types"
+	"github.com/WhaleCoinOrg/WhaleCoin/event"
 )
 
 // Account represents an Ethereum account located at a specific location defined

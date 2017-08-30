@@ -21,7 +21,7 @@ package keystore
 import (
 	"time"
 
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
 	"github.com/rjeczalik/notify"
 )
 

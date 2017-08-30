@@ -42,7 +42,7 @@ import (
 	"hash"
 	"math/big"
 
-	ethcrypto "github.com/ethereum/go-ethereum/crypto"
+	ethcrypto "github.com/WhaleCoinOrg/WhaleCoin/crypto"
 )
 
 var (

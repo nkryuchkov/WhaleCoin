@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/console"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/accounts"
+	"github.com/WhaleCoinOrg/WhaleCoin/accounts/keystore"
+	"github.com/WhaleCoinOrg/WhaleCoin/cmd/utils"
+	"github.com/WhaleCoinOrg/WhaleCoin/console"
+	"github.com/WhaleCoinOrg/WhaleCoin/crypto"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

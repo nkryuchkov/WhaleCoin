@@ -21,11 +21,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/WhaleCoinOrg/WhaleCoin/accounts/abi"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/state"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/vm"
+	"github.com/WhaleCoinOrg/WhaleCoin/ethdb"
 )
 
 func TestDefaults(t *testing.T) {

@@ -24,8 +24,8 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/log/term"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/log/term"
 	colorable "github.com/mattn/go-colorable"
 	"gopkg.in/urfave/cli.v1"
 )

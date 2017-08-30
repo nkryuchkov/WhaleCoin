@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/WhaleCoinOrg/WhaleCoin/common/math"
+	"github.com/WhaleCoinOrg/WhaleCoin/consensus"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/state"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/types"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
 )
 
 // BlockValidator is responsible for validating block headers, uncles and

@@ -21,11 +21,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/WhaleCoinOrg/WhaleCoin/common"
+	"github.com/WhaleCoinOrg/WhaleCoin/common/math"
+	"github.com/WhaleCoinOrg/WhaleCoin/core/vm"
+	"github.com/WhaleCoinOrg/WhaleCoin/log"
+	"github.com/WhaleCoinOrg/WhaleCoin/params"
 )
 
 var (
