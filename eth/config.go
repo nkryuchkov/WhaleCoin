@@ -59,9 +59,9 @@ func init() {
 		}
 	}
 	if runtime.GOOS == "windows" {
-		DefaultConfig.EthashDatasetDir = filepath.Join(home, "AppData", "Ethash")
+		DefaultConfig.EthashDatasetDir = filepath.Join(home, "AppData", "WhaleCoinEthash")
 	} else {
-		DefaultConfig.EthashDatasetDir = filepath.Join(home, ".ethash")
+		DefaultConfig.EthashDatasetDir = filepath.Join(home, ".whalecoinethash")
 	}
 }
 
