@@ -292,13 +292,7 @@ func (ethash *Ethash) verifyHeader(chain consensus.ChainReader, header, parent *
 // given the parent block's time and difficulty.
 // TODO (karalabe): Move the chain maker into this package and make this private!
 func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Header) *big.Int {
-	next := new(big.Int).Add(parent.Number, common.Big1)
-	switch {
-	case config.IsHomestead(next):
-		return calcDifficultyHomestead(time, parent)
-	default:
-		return calcDifficultyFrontier(time, parent)
-	}
+	return calcDifficultyWhale(time, parent)
 }
 
 // Some weird constants to avoid constant memory allocs for them.
@@ -360,7 +354,7 @@ func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
 // calcDifficultyFrontier is the difficulty adjustment algorithm. It returns the
 // difficulty that a new block should have when created at time given the parent
 // block's time and difficulty. The calculation uses the Frontier rules.
-func calcDifficultyFrontier(time uint64, parent *types.Header) *big.Int {
+func calcDifficultyWhale(time uint64, parent *types.Header) *big.Int {
 	diff := new(big.Int)
 	adjust := new(big.Int).Div(parent.Difficulty, params.DifficultyBoundDivisor)
 	bigTime := new(big.Int)
@@ -370,22 +364,12 @@ func calcDifficultyFrontier(time uint64, parent *types.Header) *big.Int {
 	bigParentTime.Set(parent.Time)
 
 	if bigTime.Sub(bigTime, bigParentTime).Cmp(params.DurationLimit) < 0 {
-		diff.Add(parent.Difficulty, adjust)
+		diff.Mul(parent.Difficulty, 1.1)
 	} else {
-		diff.Sub(parent.Difficulty, adjust)
+		diff.Mul(parent.Difficulty, -1.1)
 	}
 	if diff.Cmp(params.MinimumDifficulty) < 0 {
 		diff.Set(params.MinimumDifficulty)
-	}
-
-	periodCount := new(big.Int).Add(parent.Number, common.Big1)
-	periodCount.Div(periodCount, expDiffPeriod)
-	if periodCount.Cmp(common.Big1) > 0 {
-		// diff = diff + 2^(periodCount - 2)
-		expDiff := periodCount.Sub(periodCount, common.Big2)
-		expDiff.Exp(common.Big2, expDiff, nil)
-		diff.Add(diff, expDiff)
-		diff = math.BigMax(diff, params.MinimumDifficulty)
 	}
 	return diff
 }
