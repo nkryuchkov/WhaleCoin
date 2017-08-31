@@ -9,7 +9,7 @@ RUN \
   rm -rf /go-ethereum && rm -rf /var/cache/apk/*
 
 EXPOSE 8545
-EXPOSE 30303
-EXPOSE 30303/udp
+EXPOSE 30373
+EXPOSE 30373/udp
 
 ENTRYPOINT ["geth"]
