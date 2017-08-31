@@ -37,9 +37,12 @@ import (
 
 // Ethash proof-of-work protocol constants.
 var (
-	blockReward *big.Int = big.NewInt(5e+18) // Block reward in wei for successfully mining a block
-	slowBlockReward		 = big.NewInt(1e+18)
-	maxUncles            = 2                 // Maximum number of uncles allowed in a single block
+    finalBlockReward *big.Int = big.NewInt(5e+18)
+    slowBlockReward *big.Int     = big.NewInt(1e+18)
+    maxUncles            = 2                 // Maximum number of uncles allowed in a single block
+    SlowStart *big.Int             = big.NewInt(1000)
+    rewardBlockDivisor *big.Int    = big.NewInt(100000)
+    rewardBlockFlat *big.Int       = big.NewInt(1000000)
 )
 
 // Various error messages to mark blocks invalid. These should be private to
@@ -482,31 +485,39 @@ var (
 // }
 
 func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*types.Header, genesisHeader *types.Header) {
-	reward := new(big.Int)
-	if (header.Number.Cmp(params.SlowStart)  < 1 || header.Number.Cmp(params.SlowStart)  == 0) {
-		reward = reward.Set(slowBlockReward)
-	} else {
-		reward = reward.Set(blockReward)
-	}
-	r := new(big.Int)
-	contractAddress := common.BytesToAddress(genesisHeader.Extra)
-	contract := crypto.CreateAddress(contractAddress, 0)
-	var rewardDivisor *big.Int = big.NewInt(2)
+    initialBlockReward := new(big.Int)
+    initialBlockReward.SetString("15000000000000000000",10)
+    reward := new(big.Int)
+    headerRew := new(big.Int)
+    headerRew = headerRew.Div(header.Number, rewardBlockDivisor)
+    if (header.Number.Cmp(SlowStart)  < 1 || header.Number.Cmp(SlowStart)  == 0) {
+        reward = reward.Set(slowBlockReward)
+    } else if (header.Number.Cmp(rewardBlockFlat) > 1) {
+        reward = reward.Set(finalBlockReward)
+    } else {
+        reward = reward.Sub(initialBlockReward, headerRew.Mul(headerRew, slowBlockReward))
+    }
+    fmt.Println(header.Number, reward)
+    r := new(big.Int)
+    rsplit := new(big.Int)
+    contractAddress := common.BytesToAddress(genesisHeader.Extra)
+    contract := crypto.CreateAddress(contractAddress, 0)
+    var rewardDivisor *big.Int = big.NewInt(2)
 
-	for _, uncle := range uncles {
-		r.Add(uncle.Number, big8)
-		r.Sub(r, header.Number)
-		r.Mul(r, blockReward)
-		r.Div(r, big8)
-		rsplit := r.Div(r, rewardDivisor)
-		state.AddBalance(uncle.Coinbase, rsplit)
-		state.AddBalance(contract, rsplit)
-		r.Div(blockReward, big32)
-		reward.Add(reward, r)
-	}
-	rewardSplit := reward.Div(reward, rewardDivisor)
-	state.AddBalance(contract, rewardSplit)
-	state.AddBalance(header.Coinbase, rewardSplit)
-	fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(contract))
-	fmt.Println(crypto.CreateAddress(contract, 0).Hex())
+    for _, uncle := range uncles {
+        r.Add(uncle.Number, big8)
+        r.Sub(r, header.Number)
+        r.Mul(r, reward)
+        r.Div(r, big8)
+        rsplit = rsplit.Div(r, rewardDivisor)
+        state.AddBalance(uncle.Coinbase, rsplit)
+        state.AddBalance(contract, rsplit)
+        r.Div(reward, big32)
+        reward.Add(reward, r)
+    }
+    rsplit = rsplit.Div(reward, rewardDivisor)
+    state.AddBalance(contract, rsplit)
+    state.AddBalance(header.Coinbase, rsplit)
+    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(contract))
+    fmt.Println(crypto.CreateAddress(contract, 0).Hex())
 }
