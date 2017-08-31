@@ -292,7 +292,13 @@ func (ethash *Ethash) verifyHeader(chain consensus.ChainReader, header, parent *
 // given the parent block's time and difficulty.
 // TODO (karalabe): Move the chain maker into this package and make this private!
 func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Header) *big.Int {
-	return calcDifficultyWhale(time, parent)
+	next := new(big.Int).Add(parent.Number, common.Big1)
+	switch {
+	case config.IsHomestead(next):
+		return calcDifficultyWhale(time, parent)
+	default:
+		return calcDifficultyWhale(time, parent)
+	}
 }
 
 // Some weird constants to avoid constant memory allocs for them.
@@ -356,7 +362,7 @@ func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
 // block's time and difficulty. The calculation uses the Frontier rules.
 func calcDifficultyWhale(time uint64, parent *types.Header) *big.Int {
 	diff := new(big.Int)
-	adjust := new(big.Int).Div(parent.Difficulty, params.DifficultyBoundDivisor)
+	adjust := new(big.Int).Div(parent.Difficulty, big10)
 	bigTime := new(big.Int)
 	bigParentTime := new(big.Int)
 
@@ -364,9 +370,9 @@ func calcDifficultyWhale(time uint64, parent *types.Header) *big.Int {
 	bigParentTime.Set(parent.Time)
 
 	if bigTime.Sub(bigTime, bigParentTime).Cmp(params.DurationLimit) < 0 {
-		diff.Mul(parent.Difficulty, 1.1)
+		diff.Add(parent.Difficulty, adjust)
 	} else {
-		diff.Mul(parent.Difficulty, -1.1)
+		diff.Sub(parent.Difficulty, adjust)
 	}
 	if diff.Cmp(params.MinimumDifficulty) < 0 {
 		diff.Set(params.MinimumDifficulty)
