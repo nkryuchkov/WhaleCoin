@@ -49,7 +49,7 @@ var MainnetBootnodes = []string{
 }
 */
 var TestnetBootnodes = []string{
-	"enode://7ce558ae86b58988123782fcda7e99deaac9603d3c2db320ff4f1ae6c2a68782ad2c9eb232444db407cf84dbdbd557dfc0bbe4c5ccaaa24f50ed43cbf042a6ca@34.231.48.74:30301",
+	"enode://7ce558ae86b58988123782fcda7e99deaac9603d3c2db320ff4f1ae6c2a68782ad2c9eb232444db407cf84dbdbd557dfc0bbe4c5ccaaa24f50ed43cbf042a6ca@34.231.48.74:30371",
 }
 
 // RinkebyBootnodes are the enode URLs of the P2P bootstrap nodes running on the
