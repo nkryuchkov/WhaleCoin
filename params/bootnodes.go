@@ -21,7 +21,7 @@ package params
 var MainnetBootnodes = []string{
 
 	// Ethereum Foundation Go Bootnodes
-
+  "enode://244220001945e09367fb9863a3701c17083bf01b016e9ec9fd8940bf6b25153962c1f4b9ca67549796f142f9c059de1cbec44dbf0e35524f1ebf4ff5eecab5d3@34.231.64.228:30371",
 
 }
 
