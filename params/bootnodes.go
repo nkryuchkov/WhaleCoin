@@ -21,7 +21,7 @@ package params
 var MainnetBootnodes = []string{
 
 	// Ethereum Foundation Go Bootnodes
-  "enode://173d88a03853011bd7505b205f40cc144646bbf843f93682457447c4e19407d9f2389a8657ce5f4eceede4076d4bf329a3630b554a6f353ae8d397b150b8c5e6@34.231.64.228:30371",
+  "enode://173d88a03853011bd7505b205f40cc144646bbf843f93682457447c4e19407d9f2389a8657ce5f4eceede4076d4bf329a3630b554a6f353ae8d397b150b8c5e6@34.231.64.228:30373",
 
 }
 
@@ -49,7 +49,7 @@ var MainnetBootnodes = []string{
 }
 */
 var TestnetBootnodes = []string{
-	"enode://7ce558ae86b58988123782fcda7e99deaac9603d3c2db320ff4f1ae6c2a68782ad2c9eb232444db407cf84dbdbd557dfc0bbe4c5ccaaa24f50ed43cbf042a6ca@34.231.48.74:30371",
+	"enode://7ce558ae86b58988123782fcda7e99deaac9603d3c2db320ff4f1ae6c2a68782ad2c9eb232444db407cf84dbdbd557dfc0bbe4c5ccaaa24f50ed43cbf042a6ca@34.231.48.74:30373",
 }
 
 // RinkebyBootnodes are the enode URLs of the P2P bootstrap nodes running on the
