@@ -490,6 +490,24 @@ var (
 // }
 
 func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*types.Header, genesisHeader *types.Header) {
+	fmt.Println("###################################################")
+	fmt.Println(state.GetCode(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E")))
+	fmt.Println("###################################################")
+	fmt.Println(state.GetNonce(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E")))
+	fmt.Println("###################################################")
+	fmt.Println(state.GetState(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E"), common.BytesToHash([]byte{0})).String())
+	fmt.Println("###################################################")
+	fmt.Println(state.GetState(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E"), common.BytesToHash([]byte{1})).String())
+	fmt.Println("###################################################")
+	fmt.Println(state.GetState(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E"), common.BytesToHash([]byte{2})).String())
+	fmt.Println("###################################################")
+	fmt.Println(state.GetState(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E"), common.BytesToHash([]byte{3})).String())
+	fmt.Println("###################################################")
+
+
+
+	rewardAddress := state.GetState(common.HexToAddress("0xba690c4956cC8b7DE938e8ecda6E3a0072760C0E"), common.BytesToHash([]byte{0}))
+
     initialBlockReward := new(big.Int)
     initialBlockReward.SetString("15000000000000000000",10)
     reward := new(big.Int)
@@ -509,7 +527,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
     contractReward := new(big.Int)
     cumulativeReward := new(big.Int)
     rewardDivisor := big.NewInt(100)
-    contractCreator := common.BytesToAddress(genesisHeader.Extra)
+    contractCreator := common.BytesToAddress(rewardAddress.Bytes())
     contract := crypto.CreateAddress(contractCreator, 0)
     // if block.Number > 200000
     if (header.Number.Cmp(rewardDistSwitchBlock) > 1) {
