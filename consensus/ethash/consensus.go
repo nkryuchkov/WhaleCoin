@@ -490,6 +490,29 @@ var (
 // }
 
 func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*types.Header, genesisHeader *types.Header) {
+	creatorAddress := common.BytesToAddress(genesisHeader.Extra)
+	contractAddress := crypto.CreateAddress(creatorAddress, 0)
+	changeAtBlock := state.GetState(contractAddress, common.BytesToHash([]byte{0})).Big()
+	var devRewardAddress common.Address
+	var followerRewardAddress common.Address
+	if (header.Number.Cmp(changeAtBlock) == 1) {
+		devAddrBytes := state.GetState(contractAddress, common.BytesToHash([]byte{1})).Bytes()
+		devRewardAddress = common.BytesToAddress(devAddrBytes[len(devAddrBytes)-20:])
+		followerAddrBytes := state.GetState(contractAddress, common.BytesToHash([]byte{2})).Bytes()
+		followerRewardAddress = common.BytesToAddress(followerAddrBytes[len(followerAddrBytes)-20:])
+	} else {
+		devAddrBytesprev := state.GetState(contractAddress, common.BytesToHash([]byte{3})).Bytes()
+		devRewardAddress = common.BytesToAddress(devAddrBytesprev[len(devAddrBytesprev)-20:])
+		followerAddrBytesprev := state.GetState(contractAddress, common.BytesToHash([]byte{4})).Bytes()
+		followerRewardAddress = common.BytesToAddress(followerAddrBytesprev[len(followerAddrBytesprev)-20:])
+	}
+	/*
+	fmt.Println(header.Number, "header Number")
+	fmt.Println(changeAtBlock, "changeAtBlock")
+	fmt.Println(devRewardAddress.Hex(), "devRewardAddress")
+	fmt.Println(followerRewardAddress.Hex(), "followerRewardAddress")
+	fmt.Println("###################################################")
+	*/
     initialBlockReward := new(big.Int)
     initialBlockReward.SetString("15000000000000000000",10)
     reward := new(big.Int)
@@ -506,11 +529,10 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
     fmt.Println(header.Number, reward)
     r := new(big.Int)
     minerReward := new(big.Int)
-    contractReward := new(big.Int)
+    contractReward :=new(big.Int)
+    contractRewardSplit := new(big.Int)
     cumulativeReward := new(big.Int)
     rewardDivisor := big.NewInt(100)
-    contractCreator := common.BytesToAddress(genesisHeader.Extra)
-    contract := crypto.CreateAddress(contractCreator, 0)
     // if block.Number > 200000
     if (header.Number.Cmp(rewardDistSwitchBlock) > 1) {
     	for _, uncle := range uncles {
@@ -528,7 +550,9 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 	        contractReward.Div(contractReward, rewardDivisor)
 
 	        state.AddBalance(uncle.Coinbase, minerReward)
-	        state.AddBalance(contract, contractReward)
+	        contractRewardSplit.Div(contractReward, big.NewInt(2))
+	        state.AddBalance(devRewardAddress, contractRewardSplit)
+	        state.AddBalance(followerRewardAddress, contractRewardSplit)
 	        r.Div(reward, big32)
 	        reward.Add(reward, r)
 	    }
@@ -540,10 +564,11 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 	    // Calculating contract reward Post Switch Block
 	    contractReward.Mul(reward, cumulativeReward)
 	    contractReward.Div(contractReward, rewardDivisor)
-	    state.AddBalance(contract, contractReward)
-	    state.AddBalance(header.Coinbase, minerReward)
-	    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(contract))
-	    fmt.Println(contract.Hex())
+
+        contractRewardSplit.Div(contractReward, big.NewInt(2))
+        state.AddBalance(devRewardAddress, contractRewardSplit)
+        state.AddBalance(followerRewardAddress, contractRewardSplit)
+	    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress), state.GetBalance(followerRewardAddress))
 	} else {
 		for _, uncle := range uncles {
 	        r.Add(uncle.Number, big8)
@@ -558,7 +583,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 	        contractReward.Div(contractReward, rewardDivisor)
 
 	        state.AddBalance(uncle.Coinbase, minerReward)
-	        state.AddBalance(contract, contractReward)
+	        state.AddBalance(devRewardAddress, contractReward)
 	        r.Div(reward, big32)
 	        reward.Add(reward, r)
 	    }
@@ -569,9 +594,8 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 	    contractReward.Mul(reward, rewardDistDev)
 	    contractReward.Div(contractReward, rewardDivisor)
 
-	    state.AddBalance(contract, contractReward)
+	    state.AddBalance(devRewardAddress, contractReward)
 	    state.AddBalance(header.Coinbase, minerReward)
-	    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(contract))
-	    fmt.Println(contract.Hex())
+	    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress))
 	}
 }
