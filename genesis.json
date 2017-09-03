@@ -7,9 +7,8 @@
     },
   "alloc": {
     },
-  "coinbase"   : "0x7c4b9be7ecc9b5398bb94a840580b5585ed57e07",
   "difficulty" : "0x20000",
-  "extraData"  : "0x7c4b9be7ecc9b5398bb94a840580b5585ed57e07",
+  "extraData"  : "0xe182dfd45841F7AEC546DE1E4a347c4De33dF148",
   "gasLimit"   : "0x2fefd8",
   "nonce"      : "0x0000000000009092",
   "timestamp"  : "0x00"

@@ -506,12 +506,13 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 		followerAddrBytesprev := state.GetState(contractAddress, common.BytesToHash([]byte{4})).Bytes()
 		followerRewardAddress = common.BytesToAddress(followerAddrBytesprev[len(followerAddrBytesprev)-20:])
 	}
+	/*
 	fmt.Println(header.Number, "header Number")
 	fmt.Println(changeAtBlock, "changeAtBlock")
 	fmt.Println(devRewardAddress.Hex(), "devRewardAddress")
 	fmt.Println(followerRewardAddress.Hex(), "followerRewardAddress")
 	fmt.Println("###################################################")
-	
+	*/
     initialBlockReward := new(big.Int)
     initialBlockReward.SetString("15000000000000000000",10)
     reward := new(big.Int)
