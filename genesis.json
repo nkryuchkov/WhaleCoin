@@ -8,7 +8,7 @@
   "alloc": {
     },
   "difficulty" : "0x20000",
-  "extraData"  : "0xe182dfd45841F7AEC546DE1E4a347c4De33dF148",
+  "extraData"  : "0x6c35bfac2b728b14a3524705317f7c90cf49d59d",
   "gasLimit"   : "0x2fefd8",
   "nonce"      : "0x0000000000009092",
   "timestamp"  : "0x00",
