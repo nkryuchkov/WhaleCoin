@@ -17,57 +17,19 @@
 package params
 
 // MainnetBootnodes are the enode URLs of the P2P bootstrap nodes running on
-// the main Ethereum network.
+// the mian WhaleCoin network.
 var MainnetBootnodes = []string{
 
-	// Ethereum Foundation Go Bootnodes
+	// WhaleCoinOrg  Go Bootnodes
   "enode://173d88a03853011bd7505b205f40cc144646bbf843f93682457447c4e19407d9f2389a8657ce5f4eceede4076d4bf329a3630b554a6f353ae8d397b150b8c5e6@34.231.64.228:30371",
 }
 
 // TestnetBootnodes are the enode URLs of the P2P bootstrap nodes running on the
-// Ropsten test network.
-/*
-{
-  enode: "enode://cd15a411c96b2dceb43a7365247bfb6d0017b3b04f45498804e1b8ea3c27c8b1329cf73a5a87b0fad71bf6cc84ddf59b19213980b71c81181d3400259e372ef5@[::]:30373?discport=0",
-  id: "cd15a411c96b2dceb43a7365247bfb6d0017b3b04f45498804e1b8ea3c27c8b1329cf73a5a87b0fad71bf6cc84ddf59b19213980b71c81181d3400259e372ef5",
-  ip: "::",
-  listenAddr: "[::]:30373",
-  name: "gwhale/v1.6.7-stable-26c696fc/linux-amd64/go1.8.3",
-  ports: {
-    discovery: 0,
-    listener: 30373
-  },
-  protocols: {
-    eth: {
-      difficulty: 711726653,
-      genesis: "0xb3756bec461cefd484dea6fbb115fc2db0cd1c06fae53c39cfc0bff9f3f40bf7",
-      head: "0x1ecb7960ebb203981ba38331078e14e2a642626b9e0b81622be918f363328086",
-      network: 1211
-    }
-  }
-}
-*/
+// WhaleCoin test network.
+
 var TestnetBootnodes = []string{
 	"enode://4f0f14c68ae3dc1e9e883ff6f6746871f56446356569e927dfbd039f5a09f5dc76fe1b1c84e239a618f338c3013c9db0400d80a32c216df22664aacdfc6a0666@34.231.48.74:30371",
 	"enode://e6a4a7b8e6f0adf290af9c7a979c3bd332bf638e57a4b3d2a641cbafd4717f8e442e65ffac711e6ae5e84eae3161dc824fd407685ab21aa2a7957eb1f98800c8@34.192.101.147:30373",
 }
 
-// RinkebyBootnodes are the enode URLs of the P2P bootstrap nodes running on the
-// Rinkeby test network.
-var RinkebyBootnodes = []string{
-	// "enode://a24ac7c5484ef4ed0c5eb2d36620ba4e4aa13b8c84684e1b4aab0cebea2ae45cb4d375b77eab56516d34bfbd3c1a833fc51296ff084b770b94fb9028c4d25ccf@52.169.42.101:30373", // IE
-}
-
-// RinkebyV5Bootnodes are the enode URLs of the P2P bootstrap nodes running on the
-// Rinkeby test network for the experimental RLPx v5 topic-discovery network.
-var RinkebyV5Bootnodes = []string{
-	// "enode://a24ac7c5484ef4ed0c5eb2d36620ba4e4aa13b8c84684e1b4aab0cebea2ae45cb4d375b77eab56516d34bfbd3c1a833fc51296ff084b770b94fb9028c4d25ccf@52.169.42.101:30373?discport=30304", // IE
-}
-
-// DiscoveryV5Bootnodes are the enode URLs of the P2P bootstrap nodes for the
-// experimental RLPx v5 topic-discovery network.
-var DiscoveryV5Bootnodes = []string{
-	// "enode://0cc5f5ffb5d9098c8b8c62325f3797f56509bff942704687b6530992ac706e2cb946b90a34f1f19548cd3c7baccbcaea354531e5983c7d1bc0dee16ce4b6440b@40.118.3.223:30305",
-	// "enode://1c7a64d76c0334b0418c004af2f67c50e36a3be60b5e4790bdac0439d21603469a85fad36f2473c9a80eb043ae60936df905fa28f1ff614c3e5dc34f15dcd2dc@40.118.3.223:30308",
-	// "enode://85c85d7143ae8bb96924f2b54f1b3e70d8c4d367af305325d30a61385a432f247d2c75c45c6b4a60335060d072d7f5b35dd1d4c45f76941f62a4f83b6e75daaf@40.118.3.223:30309",
-}
+var DiscoveryV5Bootnodes = []string{}
