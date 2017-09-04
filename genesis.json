@@ -11,5 +11,6 @@
   "extraData"  : "0xe182dfd45841F7AEC546DE1E4a347c4De33dF148",
   "gasLimit"   : "0x2fefd8",
   "nonce"      : "0x0000000000009092",
-  "timestamp"  : "0x00"
+  "timestamp"  : "0x00",
+  "parentHash": "0x00000000000000000051c8212b08bc170393cf627860b3dfd0da2644cdbcdf85"
 }
