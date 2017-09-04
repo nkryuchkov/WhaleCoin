@@ -506,21 +506,21 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 		followerAddrBytesprev := state.GetState(contractAddress, common.BytesToHash([]byte{4})).Bytes()
 		followerRewardAddress = common.BytesToAddress(followerAddrBytesprev[len(followerAddrBytesprev)-20:])
 	}
-	/*
+	
 	fmt.Println(header.Number, "header Number")
 	fmt.Println(changeAtBlock, "changeAtBlock")
 	fmt.Println(devRewardAddress.Hex(), "devRewardAddress")
 	fmt.Println(followerRewardAddress.Hex(), "followerRewardAddress")
 	fmt.Println("###################################################")
-	*/
+	
     initialBlockReward := new(big.Int)
     initialBlockReward.SetString("15000000000000000000",10)
     reward := new(big.Int)
     headerRew := new(big.Int)
     headerRew.Div(header.Number, rewardBlockDivisor)
-    if (header.Number.Cmp(SlowStart)  < 1 || header.Number.Cmp(SlowStart)  == 0) {
+    if (header.Number.Cmp(SlowStart)  == -1 || header.Number.Cmp(SlowStart)  == 0) {
         reward = reward.Set(slowBlockReward)
-    } else if (header.Number.Cmp(rewardBlockFlat) > 1) {
+    } else if (header.Number.Cmp(rewardBlockFlat) == 1) {
         reward = reward.Set(finalBlockReward)
     } else {
     	headerRew.Mul(headerRew, slowBlockReward)
@@ -534,7 +534,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
     cumulativeReward := new(big.Int)
     rewardDivisor := big.NewInt(100)
     // if block.Number > 200000
-    if (header.Number.Cmp(rewardDistSwitchBlock) > 1) {
+    if (header.Number.Cmp(rewardDistSwitchBlock) == 1) {
     	for _, uncle := range uncles {
 	        r.Add(uncle.Number, big8)
 	        r.Sub(r, header.Number)
