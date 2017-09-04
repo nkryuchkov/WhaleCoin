@@ -8,7 +8,7 @@ Automated builds are available for stable releases and the unstable master branc
 ## Building the source
 
 For prerequisites and detailed build instructions please read the
-[Installation Instructions](https://github.com/WhaleCoinOrg/WhaleCoin/wiki/Building-Ethereum)
+[Installation Instructions](https://github.com/WhaleCoinOrg/WhaleCoin/wiki/Deployment-Wiki)
 on the wiki.
 
 Building gwhale requires both a Go (version 1.7 or later) and a C compiler.
@@ -38,8 +38,7 @@ The go-ethereum project comes with several wrappers/executables found in the `cm
 
 ## Running gwhale
 
-Going through all the possible command line flags is out of scope here (please consult our
-[CLI Wiki page](https://github.com/WhaleCoinOrg/WhaleCoin/wiki/Command-Line-Options)), but we've
+Going through all the possible command line flags is out of scope here, but we've
 enumerated a few common parameter combos to get you up to speed quickly on how you can run your
 own Geth instance.
 
