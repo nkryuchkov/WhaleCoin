@@ -507,11 +507,11 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 		followerRewardAddress = common.BytesToAddress(followerAddrBytesprev[len(followerAddrBytesprev)-20:])
 	}
 	
-	fmt.Println(header.Number, "header Number")
-	fmt.Println(changeAtBlock, "changeAtBlock")
-	fmt.Println(devRewardAddress.Hex(), "devRewardAddress")
-	fmt.Println(followerRewardAddress.Hex(), "followerRewardAddress")
-	fmt.Println("###################################################")
+	//fmt.Println(header.Number, "header Number")
+	//fmt.Println(changeAtBlock, "changeAtBlock")
+	//fmt.Println(devRewardAddress.Hex(), "devRewardAddress")
+	//fmt.Println(followerRewardAddress.Hex(), "followerRewardAddress")
+	//fmt.Println("###################################################")
 	
     initialBlockReward := new(big.Int)
     initialBlockReward.SetString("15000000000000000000",10)
@@ -526,7 +526,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
     	headerRew.Mul(headerRew, slowBlockReward)
         reward = reward.Sub(initialBlockReward, headerRew)
     }
-    fmt.Println(header.Number, reward)
+    //fmt.Println(header.Number, reward)
     r := new(big.Int)
     minerReward := new(big.Int)
     contractReward :=new(big.Int)
@@ -568,7 +568,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
         contractRewardSplit.Div(contractReward, big.NewInt(2))
         state.AddBalance(devRewardAddress, contractRewardSplit)
         state.AddBalance(followerRewardAddress, contractRewardSplit)
-	    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress), state.GetBalance(followerRewardAddress))
+	    //fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress), state.GetBalance(followerRewardAddress))
 	} else {
 		for _, uncle := range uncles {
 	        r.Add(uncle.Number, big8)
@@ -596,6 +596,6 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 
 	    state.AddBalance(devRewardAddress, contractReward)
 	    state.AddBalance(header.Coinbase, minerReward)
-	    fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress))
+	   // fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress))
 	}
 }
