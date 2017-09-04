@@ -32,14 +32,14 @@ var (
 var (
 	// MainnetChainConfig is the chain parameters to run a node on the main network.
 	MainnetChainConfig = &ChainConfig{
-		ChainId:         big.NewInt(30373),
-		HomesteadBlock:  big.NewInt(1150000),
-		DAOForkBlock:    big.NewInt(1920000),
+		ChainId:         big.NewInt(30375),
+		HomesteadBlock:  big.NewInt(0),
+		DAOForkBlock:    nil,
 		DAOForkSupport:  true,
-		EIP150Block:     big.NewInt(2463000),
-		EIP150Hash:      common.HexToHash("0x1af591618608e221082239153520c99a90ae08521c87431e2462cde846654b67"),
-		EIP155Block:     big.NewInt(2675000),
-		EIP158Block:     big.NewInt(2675000),
+		EIP150Block:     big.NewInt(0),
+		EIP150Hash:      common.HexToHash(""),
+		EIP155Block:     big.NewInt(0),
+		EIP158Block:     big.NewInt(0),
 		MetropolisBlock: big.NewInt(math.MaxInt64), // Don't enable yet
 
 		Ethash: new(EthashConfig),
@@ -52,31 +52,14 @@ var (
 		DAOForkBlock:    nil,
 		DAOForkSupport:  true,
 		EIP150Block:     big.NewInt(0),
-		EIP150Hash:      common.HexToHash("0x1af591618608e221082239153520c99a90ae08521c87431e2462cde846654b67"),
-		EIP155Block:     big.NewInt(10),
-		EIP158Block:     big.NewInt(10),
+		EIP150Hash:      common.HexToHash(""),
+		EIP155Block:     big.NewInt(0),
+		EIP158Block:     big.NewInt(0),
 		MetropolisBlock: big.NewInt(math.MaxInt64), // Don't enable yet
 
 		Ethash: new(EthashConfig),
 	}
 
-	// RinkebyChainConfig contains the chain parameters to run a node on the Rinkeby test network.
-	RinkebyChainConfig = &ChainConfig{
-		ChainId:         big.NewInt(4),
-		HomesteadBlock:  big.NewInt(1),
-		DAOForkBlock:    nil,
-		DAOForkSupport:  true,
-		EIP150Block:     big.NewInt(2),
-		EIP150Hash:      common.HexToHash("0x9b095b36c15eaf13044373aef8ee0bd3a382a5abb92e402afa44b8249c3a90e9"),
-		EIP155Block:     big.NewInt(3),
-		EIP158Block:     big.NewInt(3),
-		MetropolisBlock: big.NewInt(math.MaxInt64), // Don't enable yet
-
-		Clique: &CliqueConfig{
-			Period: 15,
-			Epoch:  30000,
-		},
-	}
 
 	// AllProtocolChanges contains every protocol change (EIPs)
 	// introduced and accepted by the Ethereum core developers.
