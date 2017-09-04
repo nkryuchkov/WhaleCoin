@@ -314,6 +314,7 @@ func DefaultGenesisBlock() *Genesis {
 		GasLimit:   3141592,
 		Difficulty: big.NewInt(131072),
 		Alloc:      decodePrealloc(testnetAllocData),
+		ParentHash: common.StringToHash("0xaf42b4b512dd7466eda51bf1589ac2d64c64c671900cf0c23a545c4bd0f72551"),
 	}
 }
 // DefaultTestnetGenesisBlock returns the Ropsten network genesis block.
@@ -325,6 +326,7 @@ func DefaultTestnetGenesisBlock() *Genesis {
 		GasLimit:   3141592,
 		Difficulty: big.NewInt(131072),
 		Alloc:      decodePrealloc(testnetAllocData),
+		ParentHash: common.StringToHash("0xaf42b4b512dd7466eda51bf1589ac2d64c64c671900cf0c23a545c4bd0f72551"),
 	}
 }
 
