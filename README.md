@@ -5,6 +5,30 @@ Official golang implementation of the WhaleCoin protocol.
 
 Automated builds are available for stable releases and the unstable master branch.
 
+## Wallets
+
+WhaleCoin is a fork of Ethereum and uses the same kind of public/private keys.  If you have a private keyfile for Ethereum, you can also use it as a WhaleCoin private key.
+
+### Desktop Wallet
+We recommend Mist, which is compatible with WhaleCoin, though it will show your currency in ETH.
+
+To use Mist, run it with the
+```
+--rpc <path>/<to>/gwhale.ipc
+```
+
+### Web Wallet
+We recommend https://www.myetherwallet.com/ to create a public / private keypair
+
+Download the keyfile and use their interface to record the public key they give you.  You can use this to mine with miner pools.
+
+Caution:
+- Never send WhaleCoin to exchange deposit addresses meant for Ethereum
+- Never send Ethereum to exchange deposit addresses meant for WhaleCoin
+
+If you do this, the exchange operator may not be able to recover your coins, and they will be stuck in an address meant for the worng chain.
+
+
 ## Building the source
 
 For prerequisites and detailed build instructions please read the
