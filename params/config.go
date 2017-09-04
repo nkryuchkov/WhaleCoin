@@ -45,9 +45,9 @@ var (
 		Ethash: new(EthashConfig),
 	}
 
-	// TestnetChainConfig contains the chain parameters to run a node on the Ropsten test network.
+	// TestnetChainConfig custom ID
 	TestnetChainConfig = &ChainConfig{
-		ChainId:         big.NewInt(3),
+		ChainId:         big.NewInt(30374),
 		HomesteadBlock:  big.NewInt(0),
 		DAOForkBlock:    nil,
 		DAOForkSupport:  true,
