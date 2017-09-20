@@ -5,6 +5,23 @@ Official golang implementation of the WhaleCoin protocol.
 
 Automated builds are available for stable releases and the unstable master branch.
 
+## Installation On Remote Server (Ubuntu 16.04)
+
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo curl -O https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
+sudo tar -xvf go1.8.3.linux-amd64.tar.gz
+sudo mv go /usr/local
+nano ~/.profile
+Add export PATH=$PATH:/usr/local/go/bin to the file
+source ~/.profile
+git clone https://github.com/WhaleCoinOrg/WhaleCoin.git
+sudo apt-get install -y build-essential
+cd WhaleCoin
+make gwhale
+./build/bin/gwhale account new
+./build/bin/gwhale
+
 ## Wallets
 
 WhaleCoin is a fork of Ethereum and uses the same kind of public/private keys.  If you have a private keyfile for Ethereum, you can also use it as a WhaleCoin private key.
