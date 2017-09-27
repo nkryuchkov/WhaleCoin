@@ -14,7 +14,7 @@ https://blog.whalecoin.org/whalecoin-wallet-desktop-wallet-walk-through-a9bc94f6
 ### Web Wallet
 We recommend:
 
-https://www.mywhalewallet.com/
+https://mywhalewallet.com/
 
 https://blog.whalecoin.org/how-to-create-and-use-a-whalewallet-c4e627a5fdf9
 
