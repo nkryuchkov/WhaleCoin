@@ -7,10 +7,12 @@ Official golang implementation of the WhaleCoin protocol.
 
 Latest release of the Desktop Wallets at:
 https://github.com/WhaleCoinOrg/DesktopWallet/releases
+
 https://blog.whalecoin.org/whalecoin-wallet-desktop-wallet-walk-through-a9bc94f6c26f
 
 ### Web Wallet
 We recommend https://www.mywhalewallet/
+
 https://blog.whalecoin.org/how-to-create-and-use-a-whalewallet-c4e627a5fdf9
 
 
