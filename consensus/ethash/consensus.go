@@ -58,6 +58,7 @@ var (
     rewardDistSwitchBlock *big.Int = big.NewInt(200000)
     rewardDistFollower *big.Int = big.NewInt(33)
     rewardDistDev *big.Int = big.NewInt(33)
+    forkBlock *big.Int = big.NewInt(202000)
 )
 
 // Various error messages to mark blocks invalid. These should be private to
@@ -568,6 +569,9 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
         contractRewardSplit.Div(contractReward, big.NewInt(2))
         state.AddBalance(devRewardAddress, contractRewardSplit)
         state.AddBalance(followerRewardAddress, contractRewardSplit)
+        if (header.Number.Cmp(forkBlock) == 1) {
+        	state.AddBalance(header.Coinbase, minerReward)
+        }
 	    //fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress), state.GetBalance(followerRewardAddress))
 	} else {
 		for _, uncle := range uncles {
