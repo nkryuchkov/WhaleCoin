@@ -19,9 +19,7 @@ package params
 // MainnetBootnodes are the enode URLs of the P2P bootstrap nodes running on
 // the mian WhaleCoin network.
 var MainnetBootnodes = []string{
-  "enode://173d88a03853011bd7505b205f40cc144646bbf843f93682457447c4e19407d9f2389a8657ce5f4eceede4076d4bf329a3630b554a6f353ae8d397b150b8c5e6@34.231.64.228:30373",
-  "enode://197598fb2872bf03aef8eceba4c39b04bea9638ffc62209cc92bcb5e8545bd4bf842665b29a14b92c2cf58b500f9dcb31d4e312d4a2570118f17fb4302717f58@34.197.224.180:30373",
-  "enode://c584fc5843efad1e2339977807ba7c0c77b8dcf2b4a954a50dd36920bb4c464ff91cfbe016537d87a79aacbb12cd74ebc594091dbdd92007590334c0f3e88d25@213.32.53.181:30371",
+
 }
 
 // TestnetBootnodes are the enode URLs of the P2P bootstrap nodes running on the
@@ -29,7 +27,7 @@ var MainnetBootnodes = []string{
 
 var TestnetBootnodes = []string{
 
-	"enode://b6708caf671522f9c376b430db37fae0e336badc25446e8055ab46d3497c91e765349ba26c2811deaa1b7f3ce6cb1bdda8c72831acd9b493c85bbbc3f6bef08d@34.231.48.74:30373",
+	// "enode://b6708caf671522f9c376b430db37fae0e336badc25446e8055ab46d3497c91e765349ba26c2811deaa1b7f3ce6cb1bdda8c72831acd9b493c85bbbc3f6bef08d@34.231.48.74:30373",
 	// "enode://271d3c7b3422e5447df4d6b8478b6c913c41bbd9490e34b92cdf7910b958ec938001ba2d60955f53812f66206fbedd0b9daea1c44621ddfb7df25e24dfaba51c@34.192.101.147:30373",
 }
 
