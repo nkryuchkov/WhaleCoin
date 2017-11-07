@@ -20,6 +20,7 @@ package params
 // the mian WhaleCoin network.
 var MainnetBootnodes = []string{
   "enode://ff82427382f1c4b0c6b0113e742cb0b06264385ff2c074e65780a667325358fd327f9f7b3fd65e74e89a2c8081448533a80324d52da25c781a224d749d629441@34.235.197.115:30371",
+  "enode://690db490f15a366b15126f67221bbcb0d4a6e6089e96db13787e805d3d273f3ffeccabc8bd149e6bbf6a4ab4744ed51ab7723c129007348dd7e0ff9e91df064e@213.32.53.181:30371",
 }
 
 // TestnetBootnodes are the enode URLs of the P2P bootstrap nodes running on the
