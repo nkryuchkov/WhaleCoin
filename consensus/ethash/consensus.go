@@ -58,7 +58,7 @@ var (
     rewardDistSwitchBlock *big.Int = big.NewInt(200000)
     rewardDistFollower *big.Int = big.NewInt(33)
     rewardDistDev *big.Int = big.NewInt(33)
-    forkBlock *big.Int = big.NewInt(204000)
+    forkBlock *big.Int = big.NewInt(203500)
 )
 
 // Various error messages to mark blocks invalid. These should be private to
