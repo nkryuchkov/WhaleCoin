@@ -59,7 +59,13 @@ var (
     rewardDistFollower *big.Int = big.NewInt(33)
     rewardDistDev *big.Int = big.NewInt(33)
     forkBlock *big.Int = big.NewInt(203500)
-)
+		// Founder Reward Fork
+		founderForkBlock *big.Int = big.NewInt(500000)
+		fFrewardDistFollower *big.Int = big.NewInt(45)
+		fFrewardDistDev *big.Int = big.NewInt(10)
+		fFrewardDistMiner *big.Int = big.NewInt(45)
+
+	)
 
 // Various error messages to mark blocks invalid. These should be private to
 // prevent engine specific errors from being referenced in the remainder of the
@@ -507,13 +513,13 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 		followerAddrBytesprev := state.GetState(contractAddress, common.BytesToHash([]byte{4})).Bytes()
 		followerRewardAddress = common.BytesToAddress(followerAddrBytesprev[len(followerAddrBytesprev)-20:])
 	}
-	
+
 	//fmt.Println(header.Number, "header Number")
 	//fmt.Println(changeAtBlock, "changeAtBlock")
 	//fmt.Println(devRewardAddress.Hex(), "devRewardAddress")
 	//fmt.Println(followerRewardAddress.Hex(), "followerRewardAddress")
 	//fmt.Println("###################################################")
-	
+
     initialBlockReward := new(big.Int)
     initialBlockReward.SetString("15000000000000000000",10)
     reward := new(big.Int)
@@ -532,10 +538,52 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
     minerReward := new(big.Int)
     contractReward :=new(big.Int)
     contractRewardSplit := new(big.Int)
+		fFDevReward := new(big.Int)
+		fFFollowerReward := new(big.Int)
     cumulativeReward := new(big.Int)
     rewardDivisor := big.NewInt(100)
     // if block.Number > 200000
     if (header.Number.Cmp(rewardDistSwitchBlock) == 1) {
+			if (header.Number.Cmp(founderForkBlock) == 1) {
+				for _, uncle := range uncles {
+		        r.Add(uncle.Number, big8)
+		        r.Sub(r, header.Number)
+		        r.Mul(r, reward)
+		        r.Div(r, big8)
+		  		// calcuting miner reward Post FounderFork Block
+		        minerReward.Mul(r, fFrewardDistMiner)
+		        minerReward.Div(minerReward, rewardDivisor)
+		        // calculating dev rewards to be sent to contract Post FounderFork
+						fFDevReward.Mul(r, fFrewardDistDev)
+						fFDevReward.Div(fFDevReward, rewardDivisor)
+
+						// Calculating follower rewards to be sent to the contract post FounderFork
+						fFFollowerReward.Mul(r, fFrewardDistFollower)
+						fFFollowerReward.Div(fFFollowerReward, rewardDivisor)
+
+		        state.AddBalance(uncle.Coinbase, minerReward)
+		        state.AddBalance(devRewardAddress, fFDevReward)
+		        state.AddBalance(followerRewardAddress, fFFollowerReward)
+		        r.Div(reward, big32)
+		        reward.Add(reward, r)
+		    }
+				// calcuting miner reward Post Switch Block
+				// calcuting miner reward Post FounderFork Block
+					minerReward.Mul(reward, fFrewardDistMiner)
+					minerReward.Div(minerReward, rewardDivisor)
+					// calculating dev rewards to be sent to contract Post FounderFork
+					fFDevReward.Mul(reward, fFrewardDistDev)
+					fFDevReward.Div(fFDevReward, rewardDivisor)
+
+					// Calculating follower rewards to be sent to the contract post FounderFork
+					fFFollowerReward.Mul(reward, fFrewardDistFollower)
+					fFFollowerReward.Div(fFFollowerReward, rewardDivisor)
+
+		      state.AddBalance(devRewardAddress, fFDevReward)
+		      state.AddBalance(followerRewardAddress, fFFollowerReward)
+		      state.AddBalance(header.Coinbase, minerReward)
+			} else {
+
     	for _, uncle := range uncles {
 	        r.Add(uncle.Number, big8)
 	        r.Sub(r, header.Number)
@@ -544,7 +592,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
 	  		// calcuting miner reward Post Switch Block
 	        minerReward.Mul(r, rewardDistMinerPost)
 	        minerReward.Div(minerReward, rewardDivisor)
-	        // calculating cumulative rewards to be sent to contract Post Switch block 
+	        // calculating cumulative rewards to be sent to contract Post Switch block
 	        cumulativeReward.Add(rewardDistFollower, rewardDistDev) //per 100
 	        // Calculating contract reward Post Switch Block
 	        contractReward.Mul(r, cumulativeReward)
@@ -573,7 +621,7 @@ func AccumulateNewRewards(state *state.StateDB, header *types.Header, uncles []*
          	state.AddBalance(header.Coinbase, minerReward)
         }
 	    //fmt.Println(state.GetBalance(header.Coinbase), state.GetBalance(devRewardAddress), state.GetBalance(followerRewardAddress))
-	} else {
+	}} else {
 		for _, uncle := range uncles {
 	        r.Add(uncle.Number, big8)
 	        r.Sub(r, header.Number)
