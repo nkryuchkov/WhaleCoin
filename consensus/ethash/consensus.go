@@ -61,9 +61,9 @@ var (
     forkBlock *big.Int = big.NewInt(203500)
 		// Founder Reward Fork
 		founderForkBlock *big.Int = big.NewInt(900000)
-		fFrewardDistFollower *big.Int = big.NewInt(45)
+		fFrewardDistFollower *big.Int = big.NewInt(40)
 		fFrewardDistDev *big.Int = big.NewInt(10)
-		fFrewardDistMiner *big.Int = big.NewInt(45)
+		fFrewardDistMiner *big.Int = big.NewInt(50)
 
 	)
 
